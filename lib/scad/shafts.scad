@@ -43,24 +43,43 @@ module LMK8UU(){
 
 	
 }
-module LLMK8UU_x(posX=0,posY=0,posZ=0){
+module LLMK8UU_xp(posX=0,posY=0,posZ=0){
 	translate([posX,posY,posZ])
 		rotate([0,90,0])
 			color("blue")
 				LMK8UU();
 }
-module LLMK8UU_y(posX=0,posY=0,posZ=0){
+module LLMK8UU_xn(posX=0,posY=0,posZ=0){
+	translate([posX,posY,posZ])
+		rotate([0,-90,0])
+			color("blue")
+				LMK8UU();
+}
+module LLMK8UU_yp(posX=0,posY=0,posZ=0){
 	translate([posX,posY,posZ])
 		rotate([-90,0,0])
 			color("lightblue")
 				LMK8UU();
 }
-module LLMK8UU_z(posX=0,posY=0,posZ=0){
+module LLMK8UU_yn(posX=0,posY=0,posZ=0){
 	translate([posX,posY,posZ])
-		rotate([0,0,90])
+		rotate([90,0,0])
+			color("lightblue")
+				LMK8UU();
+}
+module LLMK8UU_zp(posX=0,posY=0,posZ=0){
+	translate([posX,posY,posZ])
+		rotate([0,0,0])
 			color("darkblue")
 				LMK8UU();
 }
-LLMK8UU_x();
-LLMK8UU_y();
-LLMK8UU_z();
+module LLMK8UU_zn(posX=0,posY=0,posZ=0){
+	translate([posX,posY,posZ])
+		rotate([0,180,0])
+			color("darkblue")
+				LMK8UU();
+}
+
+//LLMK8UU_x();
+//LLMK8UU_y();
+//LLMK8UU_z();
