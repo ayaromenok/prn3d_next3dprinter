@@ -6,8 +6,8 @@ fnl = fn; //fn local
 //Mx = [rInt, rExt, height]
 // source: https://image.slidesharecdn.com/dimensionsofmetrichexnuts-121221090634-phpapp01/95/dimensions-of-metric-hex-nuts-1-638.jpg
 M1_6 = [0.8,1.75,1.2];
-M2 = [2,2.2,1.5];
-M2_5 = [2.25,2.75,1.9];
+M2 = [1,2.2,1.5];
+M2_5 = [1.25,2.75,1.9];
 M3 = [1.5, 3, 2.2];
 M4 = [2, 3.85, 3];
 M5 = [2.5, 4.4, 4.5];
