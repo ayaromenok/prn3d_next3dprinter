@@ -1,5 +1,8 @@
-fn_8mm 	 = 24;
-fn_15mm  = 60;
+fn = 2;
+fn_8mm 	 = 8*fn;
+fn_15mm  = 15*fn;
+fn_6mm = 6*fn;
+fn_3mm = 3*fn;
 //shaft_8x350_x(posX, posY, posZ);
 //shaft_8x350_y(posX, posY, posZ);
 //shaft_8x350_z(posX, posY, posZ);
@@ -35,9 +38,9 @@ module LMK8UU(){
 		cylinder(24,4,4, $fn=fn_15mm);
 		for(angle = [45:90:350]){
 			translate([12*sin(angle),12*cos(angle),(3.3-5)])
-				cylinder(5,3.3,3.3,$fn=24);
+				cylinder(5,3.3,3.3,$fn=fn_6mm);
 			translate([12*sin(angle),12*cos(angle),0])
-				cylinder(5,1.7,1.7,$fn=16);
+				cylinder(5,1.7,1.7,$fn=fn_3mm);
 		}
 	}
 
@@ -80,6 +83,6 @@ module LLMK8UU_zn(posX=0,posY=0,posZ=0){
 				LMK8UU();
 }
 
-//LLMK8UU_x();
-//LLMK8UU_y();
-//LLMK8UU_z();
+//LLMK8UU_xp();
+//LLMK8UU_yp();
+//LLMK8UU_zp();
