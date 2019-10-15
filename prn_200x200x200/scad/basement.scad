@@ -1,12 +1,9 @@
+include <../../settings/scad/global.scad>
+
 include <../../prn_200x200x200/scad/connector_m8.scad>
 include <../../lib/scad/threadedBars.scad>
 include <../../lib/scad/nuts.scad>
 
-lnBase = 300;			//lengthBase
-lnConnect = 50;		//lengthConnect
-lnNuts = 10;			//lengthNuts
-lnNutsShift = 2;		//M8 Nut ~ 6 mm, so +2 mm from both side will give a lnNuts 10mm value 
-Mx = 8;
 
 module threadedBarX(){
 	threadedBar_M8_x(posX=-lnConnect-lnNuts, length=lnBase+2*(lnConnect+lnNuts));
