@@ -3,21 +3,24 @@ include <../../settings/scad/global.scad>
 include <../../lib/scad/threadedBars.scad>
 include <../../lib/scad/nuts.scad>
 
-fnl = 2*fn; //fn local
-correction=0;
-M = 8-correction; //use M8 threaded bars
+fnl = 4*fn; //fn local
+correction=1;
+MX = 8;
+
+M = MX-correction; //use M8 threaded bars
 length=50;
 lengthCorrected = length - 2*correction;
 M_2 = M/2;
+MX_2 = MX/2;
 
-threadedBar_M8_x(posX=-10);
-nut_M8_x(posX=-8);
+//threadedBar_M8_x(posXi=-10);
+//nut_M8_x(posXi=-8);
 
 
-module holderThrBar(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="red", Mx=8){
-	translate([posX, posY, posZ])
-		rotate([rotX, rotY, rotZ])
-			color(clr)
+module holderThrBar(posXi=0, posYi=0, posZi=0, rotXi=0, rotYi=0, rotZi=0, clri="red", Mx=8){
+	translate([posXi, posYi, posZi])
+		rotate([rotXi, rotYi, rotZi])
+			color(clri)
 				difference(){
 					cylinder (length,Mx,Mx, $fn=Mx*fnl);
 						translate([0,0,-1])
@@ -25,15 +28,29 @@ module holderThrBar(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="red", M
 				}//diff
 } //holderThrBar
 
+module connector_M8(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="red"){
+	translate([posX, posY, posZ])
+		rotate([rotX, rotY, rotZ])
+			color(clr){
+				holderThrBar(rotYi=90, clri=clr);
+				holderThrBar(posYi=length-M*2-correction*2, rotYi=90, clri=clr);
+				holderThrBar(posYi=(length-M*2-correction*2)/2, posZi=M*4, rotYi=90, clri=clr);
 
-holderThrBar(rotY=90, clr=([0.6,1,0.6]));
-holderThrBar(posY=length-M*2, rotY=90, clr=([0.7,1,0.7]));
-holderThrBar(posY=(length-M*2)/2, posZ=M*4, rotY=90,clr=([0.8,1,0.8]));
+				holderThrBar(posXi=length/2, posYi=-M-correction, posZi=M*6, rotYi=90, rotZi=90, clri=clr);
+				holderThrBar(posXi=M+correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
+				holderThrBar(posXi=length-M-correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
+			}//transform
+}//connector
 
-holderThrBar(posX=length/2, posY=-M, posZ=M*6, rotY=90, rotZ=90, clr=([0.5,1,0.5]));
-holderThrBar(posX=M, posY=-M, posZ=M*2, rotY=90, rotZ=90, clr=([0.4,1,0.4]));
-holderThrBar(posX=length-M, posY=-M, posZ=M*2, rotY=90, rotZ=90, clr=([0.3,1,0.3]));
+//support
+/*
+translate([0,MX_2+0.2,-MX])
+	cube([length,length-MX*3-0.2*2,MX*2]);
 
+translate([M,-MX,M])
+	cube([length-MX*3-0.2*2,length,MX*2]);
+*/
+/*
 translate([0,-M,-M])
 	difference(){
 		minkowski(){
@@ -47,5 +64,4 @@ translate([0,-M,-M])
 		translate([-M_2,0,0])
 			cube([lengthCorrected+M,lengthCorrected,lengthCorrected]);
 }
-
-
+*/
