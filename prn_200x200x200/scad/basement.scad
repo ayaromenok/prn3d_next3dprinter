@@ -24,6 +24,7 @@ module threadedBarY(){
 	nut_M8_y(posY=lnBase+lnConnect+lnNutsShift);
 }
 
+module basement() {
 //front X
 translate([0,-lnConnect+lnNuts-lnNutsShift,0]){
 	connector_M8(posX=-lnConnect, clr="grey");
@@ -63,3 +64,5 @@ translate([lnBase+Mx,0, Mx*2-2])
 	threadedBarY();	
 translate([lnBase+(lnConnect)/2,0, Mx*2-2+(Mx-1)*4])
 	threadedBarY();
+}//end of basement
+
