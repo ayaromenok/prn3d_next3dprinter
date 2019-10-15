@@ -46,6 +46,17 @@ module holderShaftBar(posXi=0, posYi=0, posZi=0, rotXi=0, rotYi=0, rotZi=0, clri
 				}//diff
 } //holderShaftBar
 
+module slicerShaftBar(posXi=0, posYi=0, posZi=0, rotXi=0, rotYi=0, rotZi=0, clri="green", Mxl=8){
+	translate([posXi, posYi, posZi])
+		rotate([rotXi, rotYi, rotZi])
+			color(clri)
+				difference(){
+					cylinder (length,Mxl,Mxl, $fn=Mxl*fnl);
+						translate([0,0,-1])
+						cylinder (length+2,Mxl/2+0.2,Mxl/2+0.2, $fn=Mxl/2*fnl);
+						//! todo: add LMK8UU or LM8UU holders
+				}//diff
+} //slicerShaftBar
 
 module connector_M8(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="red"){
 	translate([posX, posY, posZ])
@@ -74,7 +85,7 @@ module connector_M8_shaftY(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="
 				holderShaftBar(posXi=M+correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
 				holderShaftBar(posXi=length*2-M-correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
 			}//transform
-}//connector
+}//connector_M8_shaftY
 
 module connector_M8_shaftZ(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="green"){
 	translate([posX, posY, posZ])
@@ -88,8 +99,24 @@ module connector_M8_shaftZ(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="
 				holderShaftBar(posXi=M+correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
 				holderShaftBar(posXi=length*2-M-correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
 			}//transform
-}//connector
-//connector_M8_shaftZ();
+}//connector_M8_shaftZ
+
+
+module connector_M8_shaftX(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="green"){
+	translate([posX, posY, posZ])
+		rotate([rotX, rotY, rotZ])
+			color(clr){
+				//holderThrBarX2(rotYi=90, clri=clr);
+
+				holderShaftBar(posXi=-M+correction, posYi=-Mx_2, posZi=Mx_2+correction, rotXi=-90, clri=clr);
+				holderShaftBar(posXi=length*2-M*3-correction, posYi=-Mx_2, posZi=Mx_2+correction,  rotXi=-90, clri=clr);
+				
+				slicerShaftBar(posXi=M+correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
+				slicerShaftBar(posXi=length*2-M-correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
+			}//transform
+}//connector_M8_shaftX
+
+//connector_M8_shaftX();
 //holderShaftBar();
 
 //support
