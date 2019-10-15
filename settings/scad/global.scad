@@ -6,10 +6,6 @@ shaftY_posX = 100;
 
 shaftZ_posY = 150;
 
-shaftZ_left_posX = 0;
-shaftZ_right_posX = 350;
-
-
 lnBase = 300;			//lengthBase
 lnConnect = 50;		//lengthConnect
 lnNuts = 10;			//lengthNuts
