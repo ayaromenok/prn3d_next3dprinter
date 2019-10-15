@@ -4,6 +4,7 @@ include <../../lib/scad/threadedBars.scad>
 include <../../lib/scad/nuts.scad>
 include <../../prn_200x200x200/scad/connector_m8.scad>
 include <../../prn_200x200x200/scad/basement.scad>
+include <../../prn_200x200x200/scad/chassis_axisY.scad>
 
 
 shaftX_0=[0,shaftX_posY,100];
@@ -18,14 +19,8 @@ shaftZ_right0=[shaftZ_right_posX,100,0];
 shaftZ_right1=[shaftZ_right_posX,150,0];
 
 //WiP
-//threadedBar_M8_x();
-//threadedBar_M8_y();
-//threadedBar_M8_z();
-//nut_M8_x();
-//nut_M8_y();
-//nut_M8_z();
-//connector_M8_shaftY();
 basement();
+chassis_axisY()
 
 // --- X shafts
 shaft_8x350_x(shaftX_0[0],shaftX_0[1],shaftX_0[2]);
