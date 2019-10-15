@@ -28,6 +28,29 @@ module holderThrBar(posXi=0, posYi=0, posZi=0, rotXi=0, rotYi=0, rotZi=0, clri="
 				}//diff
 } //holderThrBar
 
+module holderThrBarX2(posXi=0, posYi=0, posZi=0, rotXi=0, rotYi=0, rotZi=0, clri="red", Mx=8){
+	translate([posXi, posYi, posZi])
+		rotate([rotXi, rotYi, rotZi])
+			color(clri)
+				difference(){
+					cylinder (length*2,Mx,Mx, $fn=Mx*fnl);
+						translate([0,0,-1])
+						cylinder (length*2+2,Mx/2+0.2,Mx/2+0.2, $fn=Mx/2*fnl);
+				}//diff
+} //holderThrBar
+
+module holderShaftBar(posXi=0, posYi=0, posZi=0, rotXi=0, rotYi=0, rotZi=0, clri="green", Mx=8){
+	translate([posXi, posYi, posZi])
+		rotate([rotXi, rotYi, rotZi])
+			color(clri)
+				difference(){
+					cylinder (length,Mx,Mx, $fn=Mx*fnl);
+						translate([0,0,length/2-1])
+						cylinder (length/2+2,Mx/2+0.2,Mx/2+0.2, $fn=Mx/2*fnl);
+				}//diff
+} //holderShaftBar
+
+
 module connector_M8(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="red"){
 	translate([posX, posY, posZ])
 		rotate([rotX, rotY, rotZ])
@@ -41,6 +64,22 @@ module connector_M8(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="red"){
 				holderThrBar(posXi=length-M-correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
 			}//transform
 }//connector
+
+
+module connector_M8_shaftY(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="green"){
+	translate([posX, posY, posZ])
+		rotate([rotX, rotY, rotZ])
+			color(clr){
+				holderThrBarX2(rotYi=90, clri=clr);
+				holderThrBarX2(posYi=length-M*2-correction*2, rotYi=90, clri=clr);
+				holderThrBarX2(posYi=(length-M*2-correction*2)/2, posZi=M*4, rotYi=90, clri=clr);
+
+				
+				holderShaftBar(posXi=M+correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
+				holderShaftBar(posXi=length*2-M-correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
+			}//transform
+}//connector
+//holderShaftBar();
 
 //support
 /*
