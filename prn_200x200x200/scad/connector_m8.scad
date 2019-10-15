@@ -5,11 +5,9 @@ include <../../lib/scad/nuts.scad>
 
 fnl = 4*fn; //fn local
 
-M = Mx-correction; //use M8 threaded bars
 length=lnConnect;
 lengthCorrected = length - 2*correction;
-M_2 = M/2;
-Mx_2 = Mx/2;
+
 
 //threadedBar_M8_x(posXi=-10);
 //nut_M8_x(posXi=-8);
@@ -77,6 +75,21 @@ module connector_M8_shaftY(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="
 				holderShaftBar(posXi=length*2-M-correction, posYi=-M-correction, posZi=M*2, rotYi=90, rotZi=90, clri=clr);
 			}//transform
 }//connector
+
+module connector_M8_shaftZ(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="green"){
+	translate([posX, posY, posZ])
+		rotate([rotX, rotY, rotZ])
+			color(clr){
+				holderThrBarX2(rotYi=90, clri=clr);
+				holderThrBarX2(posYi=length-M*2-correction*2, rotYi=90, clri=clr);
+				holderThrBarX2(posYi=(length-M*2-correction*2)/2, posZi=M*4, rotYi=90, clri=clr);
+
+				
+				holderShaftBar(posXi=M+correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
+				holderShaftBar(posXi=length*2-M-correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
+			}//transform
+}//connector
+//connector_M8_shaftZ();
 //holderShaftBar();
 
 //support
