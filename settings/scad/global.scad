@@ -1,6 +1,6 @@
 fn = 1;
 
-shaftX_posY = 90;
+shaftX_posZ = 100;
 
 shaftY_posX = 100;
 
