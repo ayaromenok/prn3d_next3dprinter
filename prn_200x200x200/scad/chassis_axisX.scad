@@ -6,8 +6,8 @@ include <../../prn_200x200x200/scad/basement.scad>
 //basement();
 
 
-shaftX_0=[0,shaftX_posY,100];
-shaftX_1=[0,shaftX_posY,150];
+shaftX_0=[-length/2, shaftZ_posY+M*3, shaftX_posZ+M*3-correction];
+shaftX_1=[-length/2, shaftZ_posY+M*3, shaftX_posZ+length+M*3-correction];
 
 
 shaftY_0=[shaftY_posX+Mx,-lnConnect/2,(Mx-correction)*2];
@@ -20,8 +20,9 @@ shaftZ_right1=[lnBase+lnConnect-M-Mx_2, shaftZ_posY+lnConnect*2-Mx, lnConnect/2+
 
 
 module chassis_axisX() {
-	connector_M8_shaftX(posX=lnBase+lnConnect-Mx, posY=shaftZ_posY, posZ=Mx+M, rotZ=90);
-	connector_M8_shaftX(posX=-lnConnect+Mx, posY=shaftZ_posY+lnConnect*2, posZ=Mx+M, rotZ=-90);
+	connector_M8_shaftX(posX=lnBase+lnConnect-Mx, posY=shaftZ_posY, posZ=shaftX_posZ+Mx+M, rotZ=90);
+	mirror([0,1,0])
+		connector_M8_shaftX(posX=-lnConnect+Mx, posY=-shaftZ_posY, posZ=shaftX_posZ+Mx+M, rotZ=-90);
 
 	// --- X shafts
 	shaft_8x350_x(shaftX_0[0],shaftX_0[1],shaftX_0[2]);

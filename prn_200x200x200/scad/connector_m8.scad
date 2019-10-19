@@ -106,10 +106,8 @@ module connector_M8_shaftX(posX=0, posY=0, posZ=0, rotX=0, rotY=0, rotZ=0, clr="
 	translate([posX, posY, posZ])
 		rotate([rotX, rotY, rotZ])
 			color(clr){
-				//holderThrBarX2(rotYi=90, clri=clr);
-
-				holderShaftBar(posXi=-M+correction, posYi=-Mx_2, posZi=Mx_2+correction, rotXi=-90, clri=clr);
-				holderShaftBar(posXi=length*2-M*3-correction, posYi=-Mx_2, posZi=Mx_2+correction,  rotXi=-90, clri=clr);
+				holderShaftBar(posXi=M*3, posYi=-Mx_2, posZi=Mx_2+correction, rotXi=-90, clri=clr);
+				holderShaftBar(posXi=M*3, posYi=-Mx_2, posZi=length+Mx_2+correction,  rotXi=-90, clri=clr);
 				
 				slicerShaftBar(posXi=M+correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
 				slicerShaftBar(posXi=length*2-M-correction, posYi=Mx_2-correction, posZi=Mx_2+correction, clri=clr);
