@@ -1,4 +1,5 @@
-// linear bearings: LL8UU, LL6UU
+// linear bearings LLxUU: LL8UU, LL6UU
+// linear bearings LMKxUU: LMK8UU, LMK6UU, LMK8SUU
 include <../scad/globalParams.scad>
 
 Fn = gFn;
@@ -50,7 +51,10 @@ module LL6UU_z(pX=0, pY=0, pZ=0, clr="grey"){
 
 // [0]M/2, [1]Length, [2]Diameter/2, [3]supportDiameter/2, [4]supportHeight, [5]supportHolesSmall/2,
 // [6]supportHolesBig/2, [7]supportHolesBigHeight, [8]supportHolesPosDiam/2
+LMK6UU = [3, 19, (12/2), (28/2), 5, (3.5/2), (6/2), 3.1, (20/2)];
 LMK8UU = [4, 24, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
+LMK8SUU = [4, 17, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
+
 module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LMK8UU){
 	translate([_posX, _posY, _posZ])
 		rotate([_rotX, _rotY, _rotZ])
@@ -83,6 +87,28 @@ module LMK8UU_z(pX=0, pY=0, pZ=0, clr="grey"){
 		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr);
 }	
 
+//LL8SUU_
+module LMK8SUU_x(pX=0, pY=0, pZ=0, clr="grey"){
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LMK8SUU);
+}
+module LMK8SUU_y(pX=0, pY=0, pZ=0, clr="grey"){
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotX=-90, _clr=clr, _type=LMK8SUU);
+}
+module LMK8SUU_z(pX=0, pY=0, pZ=0, clr="grey"){
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr, _type=LMK8SUU);
+}
+
+//LL6UU_
+module LMK6UU_x(pX=0, pY=0, pZ=0, clr="grey"){
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LMK6UU);
+}
+module LMK6UU_y(pX=0, pY=0, pZ=0, clr="grey"){
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotX=-90, _clr=clr, _type=LMK6UU);
+}
+module LMK6UU_z(pX=0, pY=0, pZ=0, clr="grey"){
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr, _type=LMK6UU);
+}	
+
 //tests
 if (bTestInPlace){
 	//LLxUU();
@@ -94,7 +120,13 @@ if (bTestInPlace){
 	LL6UU_z(pX=20, pY=40);
 	
 	//LMKxUU();
-	LMK8UU_x(pX=60, pY=80);
-	LMK8UU_y(pX=40, pY=80);
-	LMK8UU_z(pX=20, pY=80);
+	LMK8UU_x(pX=-120);
+	LMK8UU_y(pX=-80);
+	LMK8UU_z(pX=-40);
+	LMK8SUU_x(pX=-120, pY=40);
+	LMK8SUU_y(pX=-80, pY=40);
+	LMK8SUU_z(pX=-40, pY=40);
+	LMK6UU_x(pX=-120, pY=80);
+	LMK6UU_y(pX=-80, pY=80);
+	LMK6UU_z(pX=-40, pY=80);
 }
