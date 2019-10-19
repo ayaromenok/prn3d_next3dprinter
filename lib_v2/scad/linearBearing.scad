@@ -1,6 +1,7 @@
+// linear bearings: LL8UU, LL6UU
 include <../scad/globalParams.scad>
 
-Fn = 4;//gFn;
+Fn = gFn;
 bTestInPlace = gbTestInPlace;
 
 // [0]M/2, [1]Length, [2]Diameter/2, [3]slotDiameter/2, [4]slotWidth, [5]slotDistance
