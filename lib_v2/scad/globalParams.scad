@@ -2,6 +2,7 @@
 gFn 			= 1; 											//$fn parameter
 gLengthBase 	= 300; 											//mm
 gM				= 8;											//use M8 bars
+gbTestInPlace  = true;
 
 //additional params
 gLengthBaseX 	= gLengthBase;
