@@ -5,9 +5,9 @@ include <../scad/globalParams.scad>
 Fn = gFn;
 bTestInPlace = gbTestInPlace;
 
-// [0]M/2, [1]Length, [2]Diameter/2, [3]slotDiameter/2, [4]slotWidth, [5]slotDistance
-LL6UU = [3, 19, (12/2), (11.5/2), 1.1, 11.3, "LL6UU"];
-LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3, "LL8UU"];
+// [0] strName [1]M/2, [2]Length, [3]Diameter/2, [4]slotDiameter/2, [5]slotWidth, [6]slotDistance
+LL6UU = ["LL6UU", 3, 19, (12/2), (11.5/2), 1.1, 11.3];
+LL8UU = ["LL8UU", 4, 24, (15/2), (14.3/2), 1.1, 15.3];
 
 module LLxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LL8UU){
 	translate([_posX, _posY, _posZ])
@@ -15,21 +15,21 @@ module LLxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", 
 			color(_clr)
 				difference(){
 					union(){
-						cylinder(_type[1], _type[3], _type[3], $fn=_type[2]*2*Fn);
-						cylinder(((_type[1]-_type[4]*2-_type[5])/2), _type[2], _type[2], $fn=_type[2]*2*Fn);
-						translate([0,0,((_type[1]-_type[4]*2-_type[5])/2+_type[4])])
-							cylinder((_type[5]), _type[2], _type[2], $fn=_type[2]*2*Fn);
-						translate([0,0,((_type[1]-_type[4]*2-_type[5])/2+_type[4]*2+_type[5])])
-							cylinder(((_type[1]-_type[4]*2-_type[5])/2), _type[2], _type[2], $fn=_type[2]*2*Fn);
+						cylinder(_type[2], _type[4], _type[4], $fn=_type[2]*2*Fn);
+						cylinder(((_type[2]-_type[5]*2-_type[6])/2), _type[3], _type[3], $fn=_type[3]*2*Fn);
+						translate([0,0,((_type[2]-_type[5]*2-_type[6])/2+_type[5])])
+							cylinder((_type[6]), _type[3], _type[3], $fn=_type[3]*2*Fn);
+						translate([0,0,((_type[2]-_type[5]*2-_type[6])/2+_type[5]*2+_type[6])])
+							cylinder(((_type[2]-_type[5]*2-_type[6])/2), _type[3], _type[3], $fn=_type[3]*2*Fn);
 					} //union
 					translate([0,0,-1])
-						cylinder(_type[1]+2, _type[0], _type[0], $fn=_type[0]*2*Fn);
+						cylinder(_type[2]+2, _type[1], _type[1], $fn=_type[1]*2*Fn);
 				} //difference
 	if (gEcho){
 		if (gEchoFull){
-			echo (_type[6], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
+			echo (_type[0], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
 		} else {
-			echo(_type[6]);
+			echo(_type[0]);
 		}
 	} 
 } //module LLxUU
