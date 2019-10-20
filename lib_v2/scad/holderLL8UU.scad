@@ -1,46 +1,44 @@
 // holder for LL8UU
-include <../../lib_v2/scad/globalParams.scad>
-include <../../lib_v2/scad/linearBearing.scad>
+include <../../lib_v2/scad/holderLL8UUH.scad>
 
 Fn = gFn*4;
 bTestInPlace = gbTestInPlace;
 
-// [0]M/2, [1]Length, [2]Diameter/2, [3]slotDiameter/2, [4]slotWidth, [5]slotDistance
 // [0] strName [1]M/2, [2]Length, [3]Diameter/2, [4]slotDiameter/2, [5]slotWidth, [6]slotDistance
-//LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
-sizeSupportX = 100;
-sizeSupportY = sizeSupportX;
+// LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
+
+
 module hotBedHolder(pX=0, pY=0, pZ=0, dispMetall = true, clr="lightgrey"){
 	translate([pX,pY,pZ]){
 		if (dispMetall){
 			LL8UU_y(pX=(LL8UU[3]*2), clr=[0.5,1,0.5]);
-			LL8UU_y(pX=(sizeSupportX-LL8UU[3]*2), clr=[0.5,1,0.5]);
-			LL8UU_y(pX=(LL8UU[3]*2), pY=(sizeSupportX-LL8UU[2]), clr=[0.5,1,0.5]);
-			LL8UU_y(pX=(sizeSupportX-LL8UU[3]*2), pY=(sizeSupportX-LL8UU[2]), clr=[0.5,1,0.5]);
+			LL8UU_y(pX=(vHotBedHolder[1]-LL8UU[3]*2), clr=[0.5,1,0.5]);
+			LL8UU_y(pX=(LL8UU[3]*2), pY=(vHotBedHolder[1]-LL8UU[2]), clr=[0.5,1,0.5]);
+			LL8UU_y(pX=(vHotBedHolder[1]-LL8UU[3]*2), pY=(vHotBedHolder[1]-LL8UU[2]), clr=[0.5,1,0.5]);
 		}//display Metall part
 
 		color(clr)
 
 		translate([0,0,(LL8UU[3]*2)])
-			cube([sizeSupportX,sizeSupportY,10]);
+			cube([vHotBedHolder[1],vHotBedHolder[2],10]);
 		color(clr)
 		for (i = [0:1]){
-			translate([(LL8UU[3]*2+i*(sizeSupportX-LL8UU[3]*4)),sizeSupportY,0]) {
+			translate([(LL8UU[3]*2+i*(vHotBedHolder[1]-LL8UU[3]*4)),vHotBedHolder[2],0]) {
 				rotate([90,0,0]) {
 					difference(){
 						union(){
-							cylinder(sizeSupportY, (LL8UU[3]*1.5), (LL8UU[3]*1.5), $fn=(LL8UU[3]*1.5*Fn));
+							cylinder(vHotBedHolder[2], (LL8UU[3]*1.5), (LL8UU[3]*1.5), $fn=(LL8UU[3]*1.5*Fn));
 							translate([-LL8UU[3], -LL8UU[3]*2, 0])
-								cube([(LL8UU[3]*2), (LL8UU[3]*4), sizeSupportY]);
+								cube([(LL8UU[3]*2), (LL8UU[3]*4), vHotBedHolder[2]]);
 						}//union
 						translate([0,0,-1])
-							cylinder(sizeSupportY+2, LL8UU[3], LL8UU[3], $fn=(LL8UU[3]*Fn));
+							cylinder(vHotBedHolder[2]+2, LL8UU[3], LL8UU[3], $fn=(LL8UU[3]*Fn));
 						translate([-LL8UU[5], (-LL8UU[3]*2-1), -1])
-								cube([(LL8UU[5]*2), (LL8UU[3]*4), (sizeSupportY+2)]);
+								cube([(LL8UU[5]*2), (LL8UU[3]*4), (vHotBedHolder[2]+2)]);
 						translate([(-LL8UU[3]-1), -LL8UU[3]*1.5, (LL8UU[2]/2)])
 							rotate([0,90,0])
 								cylinder((LL8UU[3]*2+2), gRBHole, gRBHole, $fn=2.3*Fn);
-						translate([(-LL8UU[3]-1), -LL8UU[3]*1.5, (sizeSupportY-LL8UU[2]/2)])
+						translate([(-LL8UU[3]-1), -LL8UU[3]*1.5, (vHotBedHolder[2]-LL8UU[2]/2)])
 							rotate([0,90,0])
 								cylinder((LL8UU[3]*2+2), gRBHole, gRBHole, $fn=2.3*Fn);
 					}//difference
@@ -51,9 +49,9 @@ module hotBedHolder(pX=0, pY=0, pZ=0, dispMetall = true, clr="lightgrey"){
 	}//translate
 	if (gEcho){
 		if (gEchoFull){
-			echo ("hotBedHolder", "pos:",pX, pY, pZ, "clr:", clr);
+			echo (vHotBedHolder[0], "pos:",pX, pY, pZ, "clr:", clr);
 		} else {
-			echo("hotBedHolder");
+			echo(vHotBedHolder[0]);
 		}
 	}
 }//hot bed holder
