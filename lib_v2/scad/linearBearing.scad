@@ -2,7 +2,7 @@
 // LLxUU: LL8UU, LL6UU
 // LMKxUU: LMK8UU, LMK6UU, LMK8SUU
 
-include <../scad/linearBearingH.scad>
+include <../scad/linearBearing_H.scad>
 
 Fn = gFn;
 bTestInPlace = gbTestInPlace;
