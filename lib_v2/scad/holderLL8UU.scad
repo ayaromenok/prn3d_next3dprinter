@@ -10,7 +10,7 @@ bTestInPlace = gbTestInPlace;
 sizeSupportX = 100;
 sizeSupportY = sizeSupportX;
 module hotBedHolder(pX=0, pY=0, pZ=0){
-	translate(pX,pY,pZ){
+	translate([pX,pY,pZ]){
 		translate([0,0,(LL8UU[2]*2)])
 			cube([sizeSupportX,sizeSupportY,10]);
 		for (i = [0:1]){
