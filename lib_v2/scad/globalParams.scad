@@ -6,6 +6,9 @@ gbTestInPlace  = false;										// used to test modules in place
 gMB				= 4;											// use M4 bolts;		
 gPrnRes			= 0.4;											// printer resolution
 
+gEcho			= true;											// to output detail count
+gEchoFull		= false;											// to output datail full info
+
 //additional params
 gLengthBaseX 	= gLengthBase;
 gLengthBaseY 	= gLengthBase;

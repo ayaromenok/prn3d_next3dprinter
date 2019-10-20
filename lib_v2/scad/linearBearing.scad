@@ -6,8 +6,8 @@ Fn = gFn;
 bTestInPlace = gbTestInPlace;
 
 // [0]M/2, [1]Length, [2]Diameter/2, [3]slotDiameter/2, [4]slotWidth, [5]slotDistance
-LL6UU = [3, 19, (12/2), (11.5/2), 1.1, 11.3];
-LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
+LL6UU = [3, 19, (12/2), (11.5/2), 1.1, 11.3, "LL6UU"];
+LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3, "LL8UU"];
 
 module LLxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LL8UU){
 	translate([_posX, _posY, _posZ])
@@ -25,6 +25,13 @@ module LLxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", 
 					translate([0,0,-1])
 						cylinder(_type[1]+2, _type[0], _type[0], $fn=_type[0]*2*Fn);
 				} //difference
+	if (gEcho){
+		if (gEchoFull){
+			echo (_type[6], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
+		} else {
+			echo(_type[6]);
+		}
+	} 
 } //module LLxUU
 
 //LL8UU_
@@ -50,10 +57,10 @@ module LL6UU_z(pX=0, pY=0, pZ=0, clr="grey"){
 }
 
 // [0]M/2, [1]Length, [2]Diameter/2, [3]supportDiameter/2, [4]supportHeight, [5]supportHolesSmall/2,
-// [6]supportHolesBig/2, [7]supportHolesBigHeight, [8]supportHolesPosDiam/2
-LMK6UU = [3, 19, (12/2), (28/2), 5, (3.5/2), (6/2), 3.1, (20/2)];
-LMK8UU = [4, 24, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
-LMK8SUU = [4, 17, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
+// [6]supportHolesBig/2, [7]supportHolesBigHeight, [8]supportHolesPosDiam/2, [9]str name
+LMK6UU = [3, 19, (12/2), (28/2), 5, (3.5/2), (6/2), 3.1, (20/2), "LKM6UU"];
+LMK8UU = [4, 24, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2), "LKM8UU"];
+LMK8SUU = [4, 17, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2), "LKM8SUU"];
 
 module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LMK8UU){
 	translate([_posX, _posY, _posZ])
@@ -74,6 +81,13 @@ module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey",
 				cylinder(_type[7]+1, _type[6], _type[6], $fn=_type[6]*2*Fn);
 		} //for
 	} //difference
+	if (gEcho){
+		if (gEchoFull){
+			echo (_type[9], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
+		} else {
+			echo(_type[9]);
+		}
+	} 
 } //module LMKxUU
 
 //LL8UU_
