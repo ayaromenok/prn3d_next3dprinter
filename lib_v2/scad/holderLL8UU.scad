@@ -9,7 +9,7 @@ bTestInPlace = gbTestInPlace;
 //LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
 sizeSupportX = 100;
 sizeSupportY = sizeSupportX;
-module hotBedHolder(pX=0, pY=0, pZ=0){
+module hotBedHolder(pX=0, pY=0, pZ=0, dispMetall = true){
 	translate([pX,pY,pZ]){
 		translate([0,0,(LL8UU[2]*2)])
 			cube([sizeSupportX,sizeSupportY,10]);
@@ -36,14 +36,17 @@ module hotBedHolder(pX=0, pY=0, pZ=0){
 				} //rotate
 			}//translate
 		}//for
+		if (dispMetall){
+			LL8UU_y(pX=(LL8UU[2]*2), clr=[0.5,1,0.5]);
+			LL8UU_y(pX=(sizeSupportX-LL8UU[2]*2), clr=[0.5,1,0.5]);
+			LL8UU_y(pX=(LL8UU[2]*2), pY=(sizeSupportX-LL8UU[1]), clr=[0.5,1,0.5]);
+			LL8UU_y(pX=(sizeSupportX-LL8UU[2]*2), pY=(sizeSupportX-LL8UU[1]), clr=[0.5,1,0.5]);
+		}//display Metall part
 	}//translate
 }//hot bed holder
 
-hotBedHolder();
-//*
-LL8UU_y(pX=(LL8UU[2]*2), clr=[0.5,1,0.5]);
-LL8UU_y(pX=(sizeSupportX-LL8UU[2]*2), clr=[0.5,1,0.5]);
-LL8UU_y(pX=(LL8UU[2]*2), pY=(sizeSupportX-LL8UU[1]), clr=[0.5,1,0.5]);
-LL8UU_y(pX=(sizeSupportX-LL8UU[2]*2), pY=(sizeSupportX-LL8UU[1]), clr=[0.5,1,0.5]);
-//*/
-//sizeSupport
+//tests
+if (bTestInPlace){
+	hotBedHolder();
+	hotBedHolder(pX=150);
+}
