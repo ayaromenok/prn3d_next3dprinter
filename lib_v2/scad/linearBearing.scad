@@ -56,11 +56,11 @@ module LL6UU_z(pX=0, pY=0, pZ=0, clr="grey"){
 		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr, _type=LL6UU);
 }
 
-// [0]M/2, [1]Length, [2]Diameter/2, [3]supportDiameter/2, [4]supportHeight, [5]supportHolesSmall/2,
-// [6]supportHolesBig/2, [7]supportHolesBigHeight, [8]supportHolesPosDiam/2, [9]str name
-LMK6UU = [3, 19, (12/2), (28/2), 5, (3.5/2), (6/2), 3.1, (20/2), "LKM6UU"];
-LMK8UU = [4, 24, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2), "LKM8UU"];
-LMK8SUU = [4, 17, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2), "LKM8SUU"];
+// [0]str name, [1]M/2, [2]Length, [3]Diameter/2, [4]supportDiameter/2, [5]supportHeight, 
+// [6]supportHolesSmall/2, [7]supportHolesBig/2, [8]supportHolesBigHeight, [9]supportHolesPosDiam/2, 
+LMK6UU = ["LKM6UU", 3, 19, (12/2), (28/2), 5, (3.5/2), (6/2), 3.1, (20/2)];
+LMK8UU = [ "LKM8UU", 4, 24, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
+LMK8SUU = ["LKM8SUU", 4, 17, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
 
 module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LMK8UU){
 	translate([_posX, _posY, _posZ])
@@ -68,24 +68,24 @@ module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey",
 			color(_clr)
 	difference(){	
 		union(){
-			cylinder(_type[1],_type[2],_type[2], $fn=_type[2]*2*Fn);
+			cylinder(_type[2],_type[3],_type[3], $fn=_type[3]*2*Fn);
 			rotate([0,0,45])
-				cylinder(_type[4],_type[3],_type[3], $fn=4);
+				cylinder(_type[5],_type[4],_type[4], $fn=4);
 		}//union
 		translate([0,0,-1])	
-		cylinder(_type[1]+2,_type[0],_type[0], $fn=_type[0]*2*Fn);
+		cylinder(_type[2]+2,_type[1],_type[1], $fn=_type[1]*2*Fn);
 		for(angle = [45:90:350]){
-			translate([(_type[8]*sin(angle)), (_type[8]*cos(angle)), -1])
-				cylinder(_type[4]+2, _type[5], _type[5], $fn=_type[5]*2*Fn);
-			translate([(_type[8]*sin(angle)), (_type[8]*cos(angle)), -1])
-				cylinder(_type[7]+1, _type[6], _type[6], $fn=_type[6]*2*Fn);
+			translate([(_type[9]*sin(angle)), (_type[9]*cos(angle)), -1])
+				cylinder(_type[5]+2, _type[6], _type[6], $fn=_type[6]*2*Fn);
+			translate([(_type[9]*sin(angle)), (_type[9]*cos(angle)), -1])
+				cylinder(_type[8]+1, _type[7], _type[7], $fn=_type[7]*2*Fn);
 		} //for
 	} //difference
 	if (gEcho){
 		if (gEchoFull){
-			echo (_type[9], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
+			echo (_type[0], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
 		} else {
-			echo(_type[9]);
+			echo(_type[0]);
 		}
 	} 
 } //module LMKxUU
