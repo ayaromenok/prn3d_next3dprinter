@@ -1,13 +1,11 @@
-// linear bearings LLxUU: LL8UU, LL6UU
-// linear bearings LMKxUU: LMK8UU, LMK6UU, LMK8SUU
-include <../scad/globalParams.scad>
+// linear bearings 
+// LLxUU: LL8UU, LL6UU
+// LMKxUU: LMK8UU, LMK6UU, LMK8SUU
+
+include <../scad/linearBearing_H.scad>
 
 Fn = gFn;
 bTestInPlace = gbTestInPlace;
-
-// [0]M/2, [1]Length, [2]Diameter/2, [3]slotDiameter/2, [4]slotWidth, [5]slotDistance
-LL6UU = [3, 19, (12/2), (11.5/2), 1.1, 11.3];
-LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
 
 module LLxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LL8UU){
 	translate([_posX, _posY, _posZ])
@@ -15,16 +13,23 @@ module LLxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", 
 			color(_clr)
 				difference(){
 					union(){
-						cylinder(_type[1], _type[3], _type[3], $fn=_type[2]*2*Fn);
-						cylinder(((_type[1]-_type[4]*2-_type[5])/2), _type[2], _type[2], $fn=_type[2]*2*Fn);
-						translate([0,0,((_type[1]-_type[4]*2-_type[5])/2+_type[4])])
-							cylinder((_type[5]), _type[2], _type[2], $fn=_type[2]*2*Fn);
-						translate([0,0,((_type[1]-_type[4]*2-_type[5])/2+_type[4]*2+_type[5])])
-							cylinder(((_type[1]-_type[4]*2-_type[5])/2), _type[2], _type[2], $fn=_type[2]*2*Fn);
+						cylinder(_type[2], _type[4], _type[4], $fn=_type[2]*2*Fn);
+						cylinder(((_type[2]-_type[5]*2-_type[6])/2), _type[3], _type[3], $fn=_type[3]*2*Fn);
+						translate([0,0,((_type[2]-_type[5]*2-_type[6])/2+_type[5])])
+							cylinder((_type[6]), _type[3], _type[3], $fn=_type[3]*2*Fn);
+						translate([0,0,((_type[2]-_type[5]*2-_type[6])/2+_type[5]*2+_type[6])])
+							cylinder(((_type[2]-_type[5]*2-_type[6])/2), _type[3], _type[3], $fn=_type[3]*2*Fn);
 					} //union
 					translate([0,0,-1])
-						cylinder(_type[1]+2, _type[0], _type[0], $fn=_type[0]*2*Fn);
+						cylinder(_type[2]+2, _type[1], _type[1], $fn=_type[1]*2*Fn);
 				} //difference
+	if (gEcho){
+		if (gEchoFull){
+			echo (_type[0], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
+		} else {
+			echo(_type[0]);
+		}
+	} 
 } //module LLxUU
 
 //LL8UU_
@@ -49,31 +54,32 @@ module LL6UU_z(pX=0, pY=0, pZ=0, clr="grey"){
 		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr, _type=LL6UU);
 }
 
-// [0]M/2, [1]Length, [2]Diameter/2, [3]supportDiameter/2, [4]supportHeight, [5]supportHolesSmall/2,
-// [6]supportHolesBig/2, [7]supportHolesBigHeight, [8]supportHolesPosDiam/2
-LMK6UU = [3, 19, (12/2), (28/2), 5, (3.5/2), (6/2), 3.1, (20/2)];
-LMK8UU = [4, 24, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
-LMK8SUU = [4, 17, (15/2), (32/2), 5, (3.5/2), (6/2), 3.1, (24/2)];
-
 module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LMK8UU){
 	translate([_posX, _posY, _posZ])
 		rotate([_rotX, _rotY, _rotZ])
 			color(_clr)
 	difference(){	
 		union(){
-			cylinder(_type[1],_type[2],_type[2], $fn=_type[2]*2*Fn);
+			cylinder(_type[2],_type[3],_type[3], $fn=_type[3]*2*Fn);
 			rotate([0,0,45])
-				cylinder(_type[4],_type[3],_type[3], $fn=4);
+				cylinder(_type[5],_type[4],_type[4], $fn=4);
 		}//union
 		translate([0,0,-1])	
-		cylinder(_type[1]+2,_type[0],_type[0], $fn=_type[0]*2*Fn);
+		cylinder(_type[2]+2,_type[1],_type[1], $fn=_type[1]*2*Fn);
 		for(angle = [45:90:350]){
-			translate([(_type[8]*sin(angle)), (_type[8]*cos(angle)), -1])
-				cylinder(_type[4]+2, _type[5], _type[5], $fn=_type[5]*2*Fn);
-			translate([(_type[8]*sin(angle)), (_type[8]*cos(angle)), -1])
-				cylinder(_type[7]+1, _type[6], _type[6], $fn=_type[6]*2*Fn);
+			translate([(_type[9]*sin(angle)), (_type[9]*cos(angle)), -1])
+				cylinder(_type[5]+2, _type[6], _type[6], $fn=_type[6]*2*Fn);
+			translate([(_type[9]*sin(angle)), (_type[9]*cos(angle)), -1])
+				cylinder(_type[8]+1, _type[7], _type[7], $fn=_type[7]*2*Fn);
 		} //for
 	} //difference
+	if (gEcho){
+		if (gEchoFull){
+			echo (_type[0], "pos:",_posX, _posY, _posZ, "rot:", _rotX, _rotY, _rotZ, "clr:", _clr);
+		} else {
+			echo(_type[0]);
+		}
+	} 
 } //module LMKxUU
 
 //LL8UU_
