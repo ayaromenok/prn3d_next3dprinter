@@ -31,7 +31,7 @@ module dualHolderLL8UU( _rX=0, _rY=0, _rZ=0, clr=[0.6,0.6,0.6]){
 }
 
 module hotBedHolder(pX=0, pY=0, pZ=0, dispMetall = true, clr="lightgrey"){
-	translate([pX,pY,pZ]){
+    translate([(-vHotBedHolder[1]/2+pX), (-vHotBedHolder[2]/2+pY), pZ]){
 		if (dispMetall){
 			LL8UU_y(pX=(LL8UU[3]*2), clr=[0.5,1,0.5]);
 			LL8UU_y(pX=(vHotBedHolder[1]-LL8UU[3]*2), clr=[0.5,1,0.5]);
@@ -59,6 +59,6 @@ module hotBedHolder(pX=0, pY=0, pZ=0, dispMetall = true, clr="lightgrey"){
 
 //tests
 //if (bTestInPlace){
-	hotBedHolder();
-	hotBedHolder(pX=150);
+//	hotBedHolder();
+//	hotBedHolder(pX=150);
 //}
