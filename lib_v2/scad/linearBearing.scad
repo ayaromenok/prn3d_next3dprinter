@@ -34,24 +34,24 @@ module LLxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", 
 
 //LL8UU_
 module LL8UU_x(pX=0, pY=0, pZ=0, clr="grey"){
-		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr);
+		LLxUU(_posX=pX-LL8UU[2]/2, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr);
 }
 module LL8UU_y(pX=0, pY=0, pZ=0, clr="grey"){
-		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotX=-90, _clr=clr);
+		LLxUU(_posX=pX, _posY=pY-LL8UU[2]/2, _posZ=pZ, _rotX=-90, _clr=clr);
 }
 module LL8UU_z(pX=0, pY=0, pZ=0, clr="grey"){
-		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr);
+		LLxUU(_posX=pX, _posY=pY, _posZ=pZ-LL8UU[2]/2, _rotZ=90, _clr=clr);
 }
 
 //LL6UU_
 module LL6UU_x(pX=0, pY=0, pZ=0, clr="grey"){
-		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LL6UU);
+		LLxUU(_posX=pX-LL6UU[2]/2, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LL6UU);
 }
 module LL6UU_y(pX=0, pY=0, pZ=0, clr="grey"){
-		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotX=-90, _clr=clr, _type=LL6UU);
+		LLxUU(_posX=pX, _posY=pY-LL6UU[2]/2, _posZ=pZ, _rotX=-90, _clr=clr, _type=LL6UU);
 }
 module LL6UU_z(pX=0, pY=0, pZ=0, clr="grey"){
-		LLxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr, _type=LL6UU);
+		LLxUU(_posX=pX, _posY=pY, _posZ=pZ-LL6UU[2]/2, _rotZ=90, _clr=clr, _type=LL6UU);
 }
 
 module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey", _type=LMK8UU){
@@ -84,40 +84,41 @@ module LMKxUU(_posX=0, _posY=0, _posZ=0, _rotX=0, _rotY=0, _rotZ=0, _clr="grey",
 
 //LL8UU_
 module LMK8UU_x(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr);
+		LMKxUU(_posX=pX-LMK8UU[2]/2, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr);
 }
 module LMK8UU_y(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotX=-90, _clr=clr);
+		LMKxUU(_posX=pX, _posY=pY-LMK8UU[2]/2, _posZ=pZ, _rotX=-90, _clr=clr);
 }
 module LMK8UU_z(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr);
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ-LMK8UU[2]/2, _rotZ=90, _clr=clr);
 }	
 
 //LL8SUU_
 module LMK8SUU_x(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LMK8SUU);
+		LMKxUU(_posX=pX-LMK8SUU[2]/2, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LMK8SUU);
 }
 module LMK8SUU_y(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotX=-90, _clr=clr, _type=LMK8SUU);
+		LMKxUU(_posX=pX, _posY=pY-LMK8SUU[2]/2, _posZ=pZ, _rotX=-90, _clr=clr, _type=LMK8SUU);
 }
 module LMK8SUU_z(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr, _type=LMK8SUU);
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ-LMK8SUU[2]/2, _rotZ=90, _clr=clr, _type=LMK8SUU);
 }
 
 //LL6UU_
 module LMK6UU_x(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LMK6UU);
+		LMKxUU(_posX=pX-LMK6UU[2]/2, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LMK6UU);
 }
 module LMK6UU_y(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotX=-90, _clr=clr, _type=LMK6UU);
+		LMKxUU(_posX=pX, _posY=pY-LMK6UU[2]/2, _posZ=pZ, _rotX=-90, _clr=clr, _type=LMK6UU);
 }
 module LMK6UU_z(pX=0, pY=0, pZ=0, clr="grey"){
-		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ, _rotZ=90, _clr=clr, _type=LMK6UU);
+		LMKxUU(_posX=pX, _posY=pY, _posZ=pZ-LMK6UU[2]/2, _rotZ=90, _clr=clr, _type=LMK6UU);
 }	
 
 //tests
 if (bTestInPlace){
 	//LLxUU();
+    
 	LL8UU_x(pX=60);
 	LL8UU_y(pX=40);
 	LL8UU_z(pX=20);
