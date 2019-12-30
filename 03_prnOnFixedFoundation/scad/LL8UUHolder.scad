@@ -42,5 +42,5 @@ module LL8UUHolder (pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, dispMetall = true, clr="
 
 LL8UUHolder(dispMetall = false);
 
- LL8UU_x(pX=50, pY=5, clr=[0.5,1,0.5]);	
- LL8UU_holder_x(pX=50, clr=[0.5,1,0.5]);	
+ //LL8UU_x(pX=50, pY=5, clr=[0.5,1,0.5]);	
+ //LL8UU_holder_x(pX=50, clr=[0.5,1,0.5]);	
