@@ -7,6 +7,7 @@ include <../scad/globalParams.scad>
 // [0] strName [1]M/2, [2]Length, [3]Diameter/2, [4]slotDiameter/2, [5]slotWidth, [6]slotDistance
 LL6UU = ["LL6UU", 3, 19, (12/2), (11.5/2), 1.1, 11.3];
 LL8UU = ["LL8UU", 4, 24, (15/2), (14.3/2), 1.1, 15.3];
+LL8UU_holder = ["LL8UU_holder", 4, 24, (15.8/2), (15.1/2), 0.7, 15.7];
 
 // [0]str name, [1]M/2, [2]Length, [3]Diameter/2, [4]supportDiameter/2, [5]supportHeight, 
 // [6]supportHolesSmall/2, [7]supportHolesBig/2, [8]supportHolesBigHeight, [9]supportHolesPosDiam/2, 

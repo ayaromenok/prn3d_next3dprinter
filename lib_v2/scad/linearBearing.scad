@@ -42,6 +42,9 @@ module LL8UU_y(pX=0, pY=0, pZ=0, clr="grey"){
 module LL8UU_z(pX=0, pY=0, pZ=0, clr="grey"){
 		LLxUU(_posX=pX, _posY=pY, _posZ=pZ-LL8UU[2]/2, _rotZ=90, _clr=clr);
 }
+module LL8UU_holder_x(pX=0, pY=0, pZ=0, clr="grey"){
+		LLxUU(_posX=pX-LL8UU[2]/2, _posY=pY, _posZ=pZ, _rotY=90, _clr=clr, _type=LL8UU_holder);
+}
 
 //LL6UU_
 module LL6UU_x(pX=0, pY=0, pZ=0, clr="grey"){
