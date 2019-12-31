@@ -54,4 +54,4 @@ module heatBedHolder160x160(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, dispMetall = tru
 }//module heatBedHolder160x160
 
 
-heatBedHolder160x160();
+//heatBedHolder160x160();

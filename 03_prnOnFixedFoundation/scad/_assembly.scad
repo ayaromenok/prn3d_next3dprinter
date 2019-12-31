@@ -1,11 +1,11 @@
-include <foundation.scad>
 include <../../lib_v2/scad/linearBearing.scad>
-include <../../lib_v2/scad/linearBearing_H.scad>
 include <../../lib_v2/scad/holderLL8UU.scad>
-include <../../lib_v2/scad/holderLL8UU_H.scad>
 
 
+include <foundation.scad>
+include <heatBed160x160.scad>
 
 foundation();
 //vHotBedHolder = ["hotBedHolder", 100, 100];
-hotBedHolder();
+hotBedHolder(pZ=20);
+heatBed160x160(pZ=50);
