@@ -4,7 +4,7 @@ include <../../lib_v2/scad/holderLL8UU_H.scad>
 include <LL8UUHolder.scad>
 Fn = gFn*4;
 bTestInPlace = gbTestInPlace;
-Mnk = 2;
+Mnk = 0;
 M_2 = 2.4+Mnk;
 sideDistX = 5; // distance from side to support hole
 sideDistY = 5; // distance from side to support hole
@@ -47,7 +47,7 @@ module heatBedHolder160x160(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, dispMetall = tru
                     cylinder(vHBHolder[3]*2, M_2, M_2, $fn=Fn*3);//M4
             }//transform
         }//diff
-        sphere(3, $fn=Fn*4);
+        sphere(Mnk, $fn=Fn*4);
         }   
             
         LL8UUHolder(pY=(vHBHolder[2]/2-LL8UU[1]*3), pZ=LL8UU[1]*4.5+pZ, rX=180, dispMetall = false);
@@ -60,4 +60,4 @@ module heatBedHolder160x160(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, dispMetall = tru
 }//module heatBedHolder160x160
 
 
-//heatBedHolder160x160(pZ=00);
+//heatBedHolder160x160(pZ=5);
