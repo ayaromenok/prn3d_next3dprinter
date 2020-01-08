@@ -2,16 +2,18 @@
 
 include <../../lib_v2/scad/holderLL8UU_H.scad>
 include <LL8UUHolder.scad>
+include <globalSettings.scad>
+
 Fn = gFn*4;
 bTestInPlace = gbTestInPlace;
-Mnk = 0;
+Mnk = gMnk;
 M_2 = 2.4+Mnk;
 sideDistX = 5; // distance from side to support hole
 sideDistY = 5; // distance from side to support hole
 // [0] strName [1]M/2, [2]Length, [3]Diameter/2, [4]slotDiameter/2, [5]slotWidth, [6]slotDistance
 // LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
 
-vHBHolder = ["hotBedHolder", 160, 160, 5-Mnk*2];
+//vHBHolder = ["hotBedHolder", 160, 160, 5-Mnk*2];
 
 
 module heatBedHolder160x160(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, dispMetall = true, clr="lightgrey"){
@@ -53,8 +55,6 @@ module heatBedHolder160x160(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, dispMetall = tru
         LL8UUHolder(pY=(vHBHolder[2]/2-LL8UU[1]*3), pZ=LL8UU[1]*4.5+pZ, rX=180, dispMetall = false);
         LL8UUHolder(pX=-vHBHolder[1]/3, pY=(-vHBHolder[2]/2+LL8UU[1]*3), pZ=LL8UU[1]*4.5+pZ, rX=180, dispMetall = false);
         LL8UUHolder(pX=vHBHolder[1]/3, pY=(-vHBHolder[2]/2+LL8UU[1]*3), pZ=LL8UU[1]*4.5+pZ, rX=180, dispMetall = false);
-        //translate([vHBHolder[1]])
-        //cube([vHBHolder[1]/16,vHBHolder[2]/8,vHBHolder[3]*3])
     }//transform
     
 }//module heatBedHolder160x160
