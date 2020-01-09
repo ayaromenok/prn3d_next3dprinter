@@ -51,13 +51,11 @@ module barHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0)
     {
         barHolderM8(pX=0, pY=(vHBHolder[2]/2-LL8UU[1]*3), pZ=shiftHolderMotorX, rX=0, rY=0, rZ=0);        
         barHolderM8(pY=(-vHBHolder[2]/2+LL8UU[1]*3), pZ=shiftHolderMotorX, rX=0, rY=0, rZ=0);
-        
-        nema17Holder(pX=-8, pY=-16, pZ=21.2, rX=-90, rY=0, rZ=90);
-        //nema17(pX=-8, pY=-16, pZ=21.2, rX=0, rY=0, rZ=90);
-        //nema17GT2Puley(pX=-8, pY=-11, pZ=21.2, rX=0, rY=0, rZ=90);
-        
-        //endStop(pX=-11, pY=(vHBHolder[2]/2)+10, pZ=shiftHolderMotorX, rX=90, rY=0, rZ=-90);
+        nema17Holder(pX=-8, pY=-16, pZ=21.2, rX=-90, rY=0, rZ=90);        
         endStopHolder(pX=-4, pY=(vHBHolder[2]/2)+10, pZ=shiftHolderMotorX, rX=90, rY=0, rZ=-90, sizeY=45);
+        //nema17(pX=-8, pY=-16, pZ=21.2, rX=0, rY=0, rZ=90);
+        //nema17GT2Puley(pX=-8, pY=-11, pZ=21.2, rX=0, rY=0, rZ=90);        
+        //endStop(pX=-11, pY=(vHBHolder[2]/2)+10, pZ=shiftHolderMotorX, rX=90, rY=0, rZ=-90);
 
         difference(){
         translate([0, bxH/2, -5])
@@ -120,11 +118,11 @@ module barHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0)
             cylinder(3, M3_2*2.5, M3_2+0.4, $fn=M3_2*2*2*Fn);        
 
         //additional hole for better holder support
-        translate([0,(-vHBHolder[2]/2+LL8UU[1]*3),-7])
-            cylinder(HR+1,R/2+0.2, R/2+0.4, $fn=R*2*Fn);
-        translate([0,(vHBHolder[2]/2-LL8UU[1]*3),-7])
-            cylinder(HR+1,R/2+0.2, R/2+0.4, $fn=R*2*Fn);    
+        //translate([0,(-vHBHolder[2]/2+LL8UU[1]*3),-7])
+        //    cylinder(HR+1,R/2+0.2, R/2+0.4, $fn=R*2*Fn);
+        //translate([0,(vHBHolder[2]/2-LL8UU[1]*3),-7])
+        //    cylinder(HR+1,R/2+0.2, R/2+0.4, $fn=R*2*Fn);    
         }//diff
         }//transform
 }//barHolder
-//barHolder();
+barHolder();
