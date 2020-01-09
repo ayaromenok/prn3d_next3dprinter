@@ -21,4 +21,20 @@ module endStop(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
     }//transform
 }//module endStop
 
+module endStopHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="lightgrey")
+{
+    translate([pX, pY, pZ-10])
+    rotate([rX, rY, rZ])
+    color(clr)
+    {
+         difference(){
+            cube([40, 16, 10]);
+            translate([17, 13, -1])
+                cylinder(12, 1, 1, $fn=12);
+            translate([36,13,-1])
+                cylinder(12, 1, 1, $fn=12);
+        }
+    }//transform
+}//module
 //endStop();
+//endStopHolder();
