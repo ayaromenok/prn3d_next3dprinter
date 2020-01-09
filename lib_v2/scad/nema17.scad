@@ -22,11 +22,27 @@ module nema17(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
             translate([1,-15.5,-15.5])
             rotate([0,-90,0])
                 cylinder(6,1.5,1.5, $fn=1.5*Fn);
+            
+            //granes
+            translate([-43.2, 21.1, (-21.1-2*2.12)])
+            rotate([45,0,0])
+                cube([44.2,6,6]);
+            translate([-43.2, 21.1, (21.1-2.12*2)])
+            rotate([45,0,0])
+                cube([44.2,6,6]);
+            translate([-43.2, -21.1, (-21.1-2*2.12)])
+            rotate([45,0,0])
+                cube([44.2,6,6]);
+            translate([-43.2, -21.1, (21.1-2.12*2)])
+            rotate([45,0,0])
+                cube([44.2,6,6]);
         }//difference
         rotate([0,90,0])
             cylinder(2,11,11, $fn=11*Fn);
         rotate([0,90,0])
             cylinder(20,2.5,2.5, $fn=2.5*Fn);
+       
+        
     }//body
 }
 
