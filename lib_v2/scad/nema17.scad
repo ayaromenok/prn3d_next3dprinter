@@ -73,8 +73,8 @@ module nema17Holder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="lightgrey")
                 cylinder(5,11.3,11.3, $fn=11*Fn);
         }//difference
         
-        translate([-7,-21.3,-24.3])
-                cube([10,42.6,3]);
+        translate([-40,-21.3,-24.3])
+                cube([43,42.6,3]);
     }//body
 }
 module nema17GT2Puley(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="darkgrey")

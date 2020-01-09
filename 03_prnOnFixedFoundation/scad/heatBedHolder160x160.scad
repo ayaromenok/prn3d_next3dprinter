@@ -11,7 +11,7 @@ M_2 = 2.4+Mnk;
 sideDistX = 5; // distance from side to support hole
 sideDistY = 5; // distance from side to support hole
 // [0] strName [1]M/2, [2]Length, [3]Diameter/2, [4]slotDiameter/2, [5]slotWidth, [6]slotDistance
-// LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
+// LL8UU = ["LL8UU", 4, 24, (15/2), (14.3/2), 1.1, 15.3];
 
 //vHBHolder = ["hotBedHolder", 160, 160, 5-Mnk*2];
 
@@ -27,10 +27,10 @@ module heatBedHolder160x160(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, dispMetall = tru
            
             translate([0,0, pZ]){
                 //cut internal parts        
-                translate([(-vHBHolder[1]*0.75),(-vHBHolder[2]/4), -vHBHolder[3]/2])
-                    cube([vHBHolder[1]/2, vHBHolder[2]/2, vHBHolder[3]*2]);            
-                translate([(vHBHolder[1]*0.25),(-vHBHolder[2]/4), -vHBHolder[3]/2])
-                    cube([vHBHolder[1]/2, vHBHolder[2]/2, vHBHolder[3]*2]);
+                translate([(-vHBHolder[1]*0.75),(-vHBHolder[2]-LL8UU[3]*4)/3+2, -vHBHolder[3]/2])
+                    cube([vHBHolder[1]/2, vHBHolder[2]-LL8UU[3]*4, vHBHolder[3]*2]);            
+                translate([(vHBHolder[1]*0.25),(-vHBHolder[2]/3), -vHBHolder[3]/2])
+                    cube([vHBHolder[1]/2, vHBHolder[2]*2/3, vHBHolder[3]*2]);
                 
                 //holes for driving stripe
                 translate([(-vHBHolder[1]*0.25+3*Mnk),-5, -vHBHolder[3]/2])

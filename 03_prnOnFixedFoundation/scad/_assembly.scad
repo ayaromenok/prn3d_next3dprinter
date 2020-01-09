@@ -8,6 +8,6 @@ include <heatBedHolder160x160.scad>
 include <barHolder.scad>
 
 foundation();
-heatBed160x160(pZ=-60);
-heatBedHolder160x160(,pZ=-19);
+//heatBed160x160(pX=-120, pZ=-60);
+heatBedHolder160x160(pX=-120, pZ=-19, clr="red");
 barHolder(pX=-219, pY=0, pZ=-20, rX=180, rY=-90);
