@@ -1,5 +1,6 @@
 
-botSideHolder();
+//botSideHolder();
+topSideHolder();
 
 bshLength = 50;
 Mx = 8;
@@ -19,17 +20,35 @@ module holeM3(_pX=0, _pY=0, _pZ=0, _rX=0, _rY=0, _rZ=0){
     }//transform
 }//module holeM3
 
-module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
+module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
 {
     translate([pX, pY, pZ])
     rotate([rX, rY, rZ])
     color(clr){
         difference(){
         linear_extrude(height)
-            import("../dxf/bottomSideHolder.dxf");
-        translate([7,70,height/2])
-        rotate([90,0,angle])
-            cylinder(50, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
+            import("../dxf/topSideHolder.dxf", $fn=20);
+        translate([45, 50, height/2])
+            rotate([90, 0, angle])
+                cylinder(70, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
+        translate([-45, 50, height/2])
+            rotate([90, 0, -angle])
+                cylinder(70, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
+        }//diff
+    }//transform
+}//module topSideHolder
+
+module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
+{
+    translate([pX, pY, pZ])
+    rotate([rX, rY, rZ])
+    color(clr){
+        difference(){
+            linear_extrude(height)
+                import("../dxf/bottomSideHolder.dxf");
+            translate([7,70,height/2])
+            rotate([90,0,angle])
+                cylinder(50, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
         }//diff
         
         difference(){
@@ -52,6 +71,6 @@ module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
             holeM3(32, 5, length-10, 0, -90);       
         }//diff
     }//transform
-}//module
+}//module botSideHolder
 
 
