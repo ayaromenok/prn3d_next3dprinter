@@ -1,6 +1,6 @@
 
 //botSideHolder();
-topSideHolder();
+//topSideHolder(); //add more longer middle part
 
 bshLength = 50;
 Mx = 8;
@@ -52,10 +52,10 @@ module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
         }//diff
         
         difference(){
-            translate([-28, 0, 0])
-                cube([length, 10, 3]);
-            holeM3(15-28, 5);
-            holeM3(length-10-28, 5);
+            translate([-28, -4, 0])
+                cube([length, 14, 3]);
+            holeM3(15-28, 1);
+            holeM3(length-10-28, 1);
         }//dif
         
         difference(){
@@ -63,13 +63,26 @@ module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
                 cube([length, 3, length]);
                 holeM3(10,13, 25, 90);
                 holeM3(-20,13, 50, 90);
+                holeM3(-5,13, 50, 90);
+                holeM3(-20,13, 35, 90);
         }//diff
         difference(){    
-            translate([29, 0, 0])
-                cube([3, 10, length]);
-            holeM3(32, 5, 15, 0, -90);
-            holeM3(32, 5, length-10, 0, -90);       
+            translate([29, -4, 0])
+                cube([3, 14, length]);
+            holeM3(32, 1, 15, 0, -90);
+            holeM3(32, 1, length-10, 0, -90);       
         }//diff
+        
+        //supports
+        translate([3, 13, height])
+        rotate([0,-90,0])
+        linear_extrude(3)
+            polygon(points=[[0,0],[length/2,0],[0,length/2]]);
+        
+        translate([2, 13, 3])
+        rotate([0,-180,0])
+        linear_extrude(3)
+            polygon(points=[[0,0],[length/2,0],[0,length/2]]);
     }//transform
 }//module botSideHolder
 
