@@ -6,7 +6,7 @@ include <../../lib_v2/scad/bearing.scad>
 // [0] strName [1]M/2, [2]Length, [3]Diameter/2, [4]slotDiameter/2, [5]slotWidth, [6]slotDistance
 // LL8UU = [4, 24, (15/2), (14.3/2), 1.1, 15.3];
 //vHBHolder = ["hotBedHolder", 160, 160, 5-Mnk*2];
-barHolderOX();
+//barHolderOX();
 
 R = 4;
 Fn = 4;

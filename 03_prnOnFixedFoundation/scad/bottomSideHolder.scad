@@ -1,5 +1,5 @@
 
-//botSideHolder();
+//botSideHolder(_showMetall=true);
 //topSideHolder(); //add more longer middle part
 
 bshLength = 50;
@@ -20,7 +20,7 @@ module holeM3(_pX=0, _pY=0, _pZ=0, _rX=0, _rY=0, _rZ=0){
     }//transform
 }//module holeM3
 
-module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
+module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
 {
     translate([pX, pY, pZ])
     rotate([rX, rY, rZ])
@@ -38,7 +38,7 @@ module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
     }//transform
 }//module topSideHolder
 
-module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
+module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
 {
     translate([pX, pY, pZ])
     rotate([rX, rY, rZ])
@@ -50,7 +50,12 @@ module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey")
             rotate([90,0,angle])
                 cylinder(50, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
         }//diff
-        
+        if (_showMetall){
+            translate([7,70,height/2])
+            rotate([90,0,angle])
+            translate([0,0,-445])
+                cylinder(500, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
+            }
         difference(){
             translate([-28, -4, 0])
                 cube([length, 14, 3]);
