@@ -1,6 +1,6 @@
 
 //botSideHolder(_showMetall=true);
-//topSideHolder(); //add more longer middle part
+//topSideHolder(_showMetall=true); //add more longer middle part
 
 bshLength = 50;
 Mx = 8;
@@ -35,6 +35,14 @@ module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetal
             rotate([90, 0, -angle])
                 cylinder(70, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
         }//diff
+        
+        if (_showMetall){
+            
+            translate([40, 35, -height/2])
+               cylinder(500, Mx/2+0.4, Mx/2+0.4, $fn=30);
+            translate([-40, 35, -height/2])            
+                cylinder(500, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
+         }//showMetal
     }//transform
 }//module topSideHolder
 
@@ -55,7 +63,7 @@ module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetal
             rotate([90,0,angle])
             translate([0,0,-445])
                 cylinder(500, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
-            }
+         }//showMetall
         difference(){
             translate([-28, -4, 0])
                 cube([length, 14, 3]);
