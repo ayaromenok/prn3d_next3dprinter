@@ -15,7 +15,7 @@ heatBedHolder160x160(pX=-80, pZ=-19, clr="red");
 barHolder(pX=-219, pY=0, pZ=-20, rX=180, rY=-90, showMetall=true);
 barHolderOX(pX=219, pY=0, pZ=-20, rX=180, rY=-90, rZ=180, showMetall=true);
 
-topSideHolder(pY=-216, pZ=-350, rX=-90);
+topSideHolder(pY=-216, pZ=-350, rX=-90, _showMetall=true);
 topSideHolder(pY=200, pZ=-350, rX=-90);
 
 //bottomHolders
