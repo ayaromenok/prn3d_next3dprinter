@@ -77,6 +77,44 @@ module nema17Holder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="lightgrey")
                 cube([43,42.6,3]);
     }//body
 }
+module nema17Holder2(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="lightgrey")
+{
+    translate([pX, pY, pZ])
+    rotate([rX, rY, rZ])
+    color(clr)
+    {
+        difference(){
+            translate([0,-21.3,-21.3])
+                cube([3,42.6,42.6]);
+            //holes
+            translate([5,15.5,15.5])
+            rotate([0,-90,0])
+                cylinder(6,1.7,1.7, $fn=1.7*2*Fn);
+            translate([5,15.5,-15.5])
+            rotate([0,-90,0])
+                cylinder(6,1.7,1.7, $fn=1.7*2*Fn);
+            translate([5,-15.5,15.5])
+            rotate([0,-90,0])
+                cylinder(6,1.7,1.7, $fn=1.7*2*Fn);
+            translate([5,-15.5,-15.5])
+            rotate([0,-90,0])
+                cylinder(6,1.7,1.7, $fn=1.7*2*Fn);
+            translate([-1,0,0])
+            rotate([0,90,0])
+                cylinder(5,11.3,11.3, $fn=11*Fn);
+            translate([-1,0,-11.3])
+                cube([6,22.6,22.6]);
+        }//difference
+        
+        translate([-43,-21.3,-24.3])
+                cube([46,42.6,3]);
+        translate([-43,-21.3,21.3])
+                cube([46,42.6,3]);
+        translate([-43,-24.3,-24.3])
+                cube([46,3,48.6]);
+        
+    }//body
+}
 module nema17GT2Puley(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="darkgrey")
 {
     translate([pX, pY, pZ])
@@ -97,5 +135,5 @@ module nema17GT2Puley(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="darkgrey")
     }//transform
 }
 //nema17(pX=0, rX=0);
-//nema17Holder(pX=5, pY=50);
+//nema17Holder2(pX=0, pY=0);
 //nema17GT2Puley(pX=5);
