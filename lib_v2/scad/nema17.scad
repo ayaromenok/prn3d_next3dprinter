@@ -134,6 +134,33 @@ module nema17GT2Puley(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="darkgrey")
     }
     }//transform
 }
+module KFL08(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="darkgrey")
+{
+    translate([pX, pY, pZ])
+    rotate([rX, rY, rZ])
+    color(clr)
+    {
+        difference(){
+        union(){
+            cylinder(8.5, 13.5, 13.5, $fn=14*Fn);
+            cylinder(12, 6, 6,$fn=6*Fn);
+            translate([18.5, 0, 0])
+                cylinder(4, 5.5, 5.5, $fn=5*Fn);
+            translate([-18.5, 0, 0])
+                cylinder(4, 5.5, 5.5, $fn=5*Fn);
+            translate([-18.5, -5.5, 0])
+                cube([37, 11, 4]);
+            }//union
+            translate([0,0,-1])
+                cylinder(15, 4, 4, $fn=4*Fn);
+            translate([18.5, 0, -1])
+                cylinder(6, 2.5, 2.5, $fn=3*Fn);
+            translate([-18.5, 0, -1])
+                cylinder(6, 2.5, 2.5, $fn=3*Fn);
+        }//difference        
+    }//trasform
+}//module KLF08
+//KFL08();
 //nema17(pX=0, rX=0);
 //nema17Holder2(pX=0, pY=0);
 //nema17GT2Puley(pX=5);
