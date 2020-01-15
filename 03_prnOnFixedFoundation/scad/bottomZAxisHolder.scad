@@ -1,13 +1,14 @@
 include <../../lib_v2/scad/nema17.scad>
 include <../../lib_v2/scad/endStop.scad>
 
-//botZAxisHolder(showMetall = false);
+//botZAxisHolder(showMetall = true);
 //botZAxisHolder(pY=0,useEndStop=false, showMetall = false);
 
 R=4;
 Fn=4;
 HR=10;
-shiftHolderMotorZ=46; //difference between bar length and foundation
+//need to check value - 30 or even more
+shiftHolderMotorZ=46+32; //difference between bar length and foundation
 
 module barHolderM8V(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
 {
@@ -17,17 +18,19 @@ module barHolderM8V(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall 
     {
         difference(){
             union(){
-                cylinder(HR,1.6*R, 1.5*R, $fn=R*2*2*Fn);
+                cylinder(HR,1.57*R, 1.5*R, $fn=R*2*2*Fn);
                 //cylinder(HR/4, 2.3*R, 1.5*R, $fn=R*2*2*Fn);
                 //translate([0,0,-shiftHolderMotorZ])
                 //    cylinder(shiftHolderMotorZ, 2.*R, 2.*R, $fn=R*2*2*Fn);
             }//union
             cylinder(HR+1,R+0.2, R+0.4, $fn=R*2*Fn);
         }//diff
+        translate([0,0,-32])
+        cylinder(32,1.57*R, 1.57*R, $fn=R*2*2*Fn);
         //bar
         if (_showMetall){
             translate([0,0,0])
-                cylinder(300,4,4, $fn=3);
+                cylinder(300,4,4, $fn=5);
         }
     }//transform    
 } //barHolder
@@ -52,7 +55,9 @@ module botZAxisHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", useEndStop
         nema17Holder2(pX=-18, pY=0, pZ=43, rX=0, rY=-90, rZ=90);        
         
         if(showMetall){
-            nema17(pX=-20, pY=0, pZ=43, rX=0, rY=-90, rZ=0);            
+            nema17(pX=-20, pY=0, pZ=43, rX=0, rY=-90, rZ=0);
+            translate([-20,0,65])
+                cylinder(314,4,4, $fn=5);
         }//show Metall
         if(useEndStop){
             endStopHolder(pX=0, pY=22, pZ=30, rX=90, rY=0, rZ=180, sizeY=45);
