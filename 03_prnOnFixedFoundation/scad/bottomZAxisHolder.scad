@@ -60,9 +60,9 @@ module botZAxisHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", useEndStop
                 cylinder(314,4,4, $fn=5);
         }//show Metall
         if(useEndStop){
-            endStopHolder(pX=0, pY=22, pZ=30, rX=90, rY=0, rZ=180, sizeY=45);
+            endStopHolder(pX=0, pY=22, pZ=72, rX=90, rY=0, rZ=180, sizeY=50);
             if(showMetall){            
-                endStop(pX=-0, pY=29, pZ=30, rX=90, rY=0, rZ=180);
+                endStop(pX=-0, pY=29, pZ=72, rX=90, rY=0, rZ=180);
             }//show Metall
         }//useEndStop
         
