@@ -1,12 +1,13 @@
-
+include <../../lib_v2/scad/nema17.scad>
 //botSideHolder(_showMetall=true);
-//topSideHolder(_showMetall=true); //add more longer middle part
+topSideHolder(_showMetall=false); //add more longer middle part
 
 bshLength = 50;
 Mx = 8;
 
 angle = (90-65.9);
 height = 16;
+height2 = 40;
 length = 60;
 
 module holeM3(_pX=0, _pY=0, _pZ=0, _rX=0, _rY=0, _rZ=0){
@@ -26,18 +27,28 @@ module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetal
     rotate([rX, rY, rZ])
     color(clr){
         difference(){
-        linear_extrude(height)
-            import("../dxf/topSideHolder.dxf", $fn=20);
-        translate([45, 50, height/2])
+            linear_extrude(height2)
+                import("../dxf/topSideHolder.dxf", $fn=20);
+            translate([45, 50, height/2])
             rotate([90, 0, angle])
                 cylinder(70, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
-        translate([-45, 50, height/2])
+            translate([-45, 50, height/2])
             rotate([90, 0, -angle])
                 cylinder(70, Mx/2+0.4, Mx/2+0.4, $fn=Mx*4);
+            translate([18.5, 50, 26])
+            rotate([90, 0, 0])
+                cylinder(70, 2.4, 2.4, $fn=3*4);
+            translate([-18.5, 50, 26])
+            rotate([90, 0, 0])
+                cylinder(70, 2.4, 2.4, $fn=3*4);
+            translate([-35,25,15])
+                cube([70,30,30]);
         }//diff
         
+        barHolderM8V2(pY=20, pZ=6,rX=90); 
+        
         if (_showMetall){
-            
+            KFL08(pY = 20, pZ=26, rX=90, rY=0);
             translate([40, 35, -height/2])
                cylinder(500, Mx/2+0.4, Mx/2+0.4, $fn=30);
             translate([-40, 35, -height/2])            
@@ -45,6 +56,35 @@ module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetal
          }//showMetal
     }//transform
 }//module topSideHolder
+
+hiftHolderMotorZZ = 0;
+R=4;
+Fn=4;
+HR=10;
+module barHolderM8V2(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
+{
+    translate([pX, pY, pZ])
+    rotate([rX, rY, rZ])
+    color(clr)
+    {
+        difference(){
+            union(){
+                cylinder(HR,1.5*R, 1.5*R, $fn=R*2*2*Fn);
+                //cylinder(HR/4, 2.3*R, 1.5*R, $fn=R*2*2*Fn);
+                //translate([0,0,-shiftHolderMotorZ])
+                //    cylinder(shiftHolderMotorZ, 2.*R, 2.*R, $fn=R*2*2*Fn);
+            }//union
+            cylinder(HR+1,R+0.3, R+0.5, $fn=R*2*Fn);
+        }//diff
+        translate([0,0,-10])
+        cylinder(10,1.5*R, 1.5*R, $fn=R*2*2*Fn);
+        //bar
+        if (_showMetall){
+            translate([0,0,0])
+                cylinder(300,4,4, $fn=5);
+        }
+    }//transform    
+} //barHolder
 
 module botSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
 {

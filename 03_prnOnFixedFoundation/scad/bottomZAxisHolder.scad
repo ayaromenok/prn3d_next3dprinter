@@ -2,7 +2,7 @@ include <../../lib_v2/scad/nema17.scad>
 include <../../lib_v2/scad/endStop.scad>
 
 //botZAxisHolder(showMetall = true);
-//botZAxisHolder(pY=0,useEndStop=false, showMetall = false);
+//botZAxisHolder(pY=0, useEndStop=true, showMetall = false);
 
 R=4;
 Fn=4;
@@ -23,7 +23,7 @@ module barHolderM8V(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall 
                 //translate([0,0,-shiftHolderMotorZ])
                 //    cylinder(shiftHolderMotorZ, 2.*R, 2.*R, $fn=R*2*2*Fn);
             }//union
-            cylinder(HR+1,R+0.2, R+0.4, $fn=R*2*Fn);
+            cylinder(HR+1,R+0.3, R+0.5, $fn=R*2*Fn);
         }//diff
         translate([0,0,-32])
         cylinder(32,1.57*R, 1.57*R, $fn=R*2*2*Fn);
