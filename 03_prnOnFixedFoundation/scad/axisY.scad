@@ -12,11 +12,20 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
     rotate([rX, rY, rZ])
     color(clr)
     {
-        translate([-32,-ayhSizeY/2,0])
-            cube([ayhSizeY, ayhSizeY, ayhSizeZ]);
-        
+        difference(){
+            translate([-32,-ayhSizeY/2,0])
+                cube([ayhSizeY, ayhSizeY, ayhSizeZ]);
+            translate([-20,0,-1])
+                cylinder(ayhSizeZ+2, 4.8, 4.8, $fn=20);
+            translate([-20,0,ayhSizeZ-10])
+                cylinder(11, 5.4, 5.4, $fn=30);
+        }//diff
+            
+        if (_showMetall){
+            M8TR8(pX=-20, pZ=ayhSizeZ+5, rY=180, rZ=45);
+        }
         LL8UUHolder(pZ=12, rY=-90, rZ=90, dispMetall = _showMetall);
-        LL8UUHolder(pZ=50, rY=-90, rZ=-90, dispMetall = _showMetall);
+        LL8UUHolder(pZ=50, rY=-90, rZ=90, dispMetall = _showMetall);
         
         barHolderM8H(pY=20);
         if (_showMetall){
@@ -27,6 +36,35 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
         }//showMentall
     }//transform
 }//axisYHolder
+
+
+module M8TR8(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
+{
+    translate([pX, pY, pZ])
+    rotate([rX, rY, rZ])
+    color(clr){
+        difference(){
+            union(){
+                cylinder(15,5.1,5.1,$fn=20);
+                translate([0,0,1.5])
+                    cylinder(3.5,11,11, $fn=30);
+            }//union
+            translate([0,0,-1])
+                cylinder(17,4.4,4.4,$fn=20);
+            translate([8,0,0])
+                cylinder(6,1.6,1.6,$fn=6);
+            translate([-8,0,0])
+                cylinder(6,1.6,1.6,$fn=6);
+            translate([0,8,0])
+                cylinder(6,1.6,1.6,$fn=6);
+            translate([0,-8,0])
+                cylinder(6,1.6,1.6,$fn=6);
+        }//diff
+            
+    }//transform
+}//module
+    
+    
 
 hiftHolderMotorZZ = 0;
 R=4;
