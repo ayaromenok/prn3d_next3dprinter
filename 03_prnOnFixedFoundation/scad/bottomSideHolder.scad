@@ -1,6 +1,7 @@
 include <../../lib_v2/scad/nema17.scad>
+include <../../lib_v2/scad/endStop.scad>
 //botSideHolder(_showMetall=true);
-topSideHolder(_showMetall=false); //add more longer middle part
+topSideHolder(useEndStop = true, _showMetall=false); //add more longer middle part
 
 bshLength = 50;
 Mx = 8;
@@ -21,7 +22,7 @@ module holeM3(_pX=0, _pY=0, _pZ=0, _rX=0, _rY=0, _rZ=0){
     }//transform
 }//module holeM3
 
-module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
+module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", useEndStop = true, _showMetall = false)
 {
     translate([pX, pY, pZ])
     rotate([rX, rY, rZ])
@@ -46,6 +47,13 @@ module topSideHolder( pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetal
         }//diff
         
         barHolderM8V2(pY=20, pZ=6,rX=90); 
+        
+        if(useEndStop){
+            endStopHolder(pX=-35, pY=22, pZ=-10, rX=0, rY=-90, rZ=180, sizeY=18);
+            if(_showMetall){            
+                endStop(pX=-28, pY=22, pZ=-10, rX=0, rY=-90, rZ=180);
+            }//show Metall
+        }//useEndStop
         
         if (_showMetall){
             KFL08(pY = 20, pZ=26, rX=90, rY=0);
