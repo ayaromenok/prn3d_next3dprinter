@@ -1,9 +1,9 @@
 include <LL8UUHolder.scad>
 include <globalSettings.scad>
 
-axisYHolder(_showMetall = true);
+axisYHolder(_showMetall = false);
 ayhSizeX = 20;
-ayhSizeY = 20;
+ayhSizeY = 25;
 ayhSizeZ = 62;
 
 module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
@@ -13,12 +13,23 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
     color(clr)
     {
         difference(){
-            translate([-32,-ayhSizeY/2,0])
-                cube([ayhSizeY, ayhSizeY, ayhSizeZ]);
+            translate([-31,-(14+21),0])
+                cube([40, 21, ayhSizeZ+3]);
+            translate([-40, -(14+8), 8])
+            rotate([0,90,0])
+                cylinder(52, 4.6, 4.3, $fn=30);
+            translate([-40, -(14+8), 58])
+            rotate([0,90,0])
+                cylinder(52, 4.6, 4.3, $fn=30);
+        }//dif
+        difference(){
+            translate([-31,-14,0])
+                cube([ayhSizeX, ayhSizeY, ayhSizeZ]);
             translate([-20,0,-1])
                 cylinder(ayhSizeZ+2, 4.8, 4.8, $fn=20);
             translate([-20,0,ayhSizeZ-10])
                 cylinder(11, 5.4, 5.4, $fn=30);
+            M8TR8Holes(pX=-20, pZ=ayhSizeZ+1, rY=180, rZ=45);
         }//diff
             
         if (_showMetall){
@@ -27,7 +38,7 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
         LL8UUHolder(pZ=12, rY=-90, rZ=90, dispMetall = _showMetall);
         LL8UUHolder(pZ=50, rY=-90, rZ=90, dispMetall = _showMetall);
         
-        barHolderM8H(pY=20);
+
         if (_showMetall){
             translate([0,0,0])
                 cylinder(300, 4, 4, $fn=20);
@@ -64,7 +75,21 @@ module M8TR8(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false
     }//transform
 }//module
     
-    
+module M8TR8Holes(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
+{
+    translate([pX, pY, pZ])
+    rotate([rX, rY, rZ])
+    color(clr){
+        translate([8,0,0])
+                cylinder(10,1.3,1.3,$fn=12);
+            translate([-8,0,0])
+                cylinder(10,1.3,1.3,$fn=12);
+            translate([0,8,0])
+                cylinder(10,1.3,1.3,$fn=12);
+            translate([0,-8,0])
+                cylinder(10,1.3,1.3,$fn=12);
+    }//transform
+}//module    
 
 hiftHolderMotorZZ = 0;
 R=4;
