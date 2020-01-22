@@ -1,12 +1,16 @@
 include <LL8UUHolder.scad>
 include <globalSettings.scad>
+include <../../lib_v2/scad/nema17.scad>
+include <../../lib_v2/scad/endStop.scad>
+//todo: add NEMA17/opposite holder
+// endStopHolder
+axisYHolder(_showMetall = false, nema17=true);
 
-axisYHolder(_showMetall = false);
 ayhSizeX = 20;
 ayhSizeY = 25;
 ayhSizeZ = 62;
 
-module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false)
+module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false, nema17=true)
 {
     translate([pX, pY, pZ])
     rotate([rX, rY, rZ])
@@ -14,14 +18,41 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
     {
         difference(){
             translate([-31,-(14+21),0])
-                cube([40, 21, ayhSizeZ+3]);
+                cube([46, 21, ayhSizeZ+3]);
             translate([-40, -(14+8), 8])
             rotate([0,90,0])
-                cylinder(52, 4.6, 4.3, $fn=30);
+                cylinder(62, 4.6, 4.3, $fn=30);
             translate([-40, -(14+8), 58])
             rotate([0,90,0])
-                cylinder(52, 4.6, 4.3, $fn=30);
+                cylinder(62, 4.6, 4.3, $fn=30);
+            if (nema17){
+                translate([-40, -(14+8+5), 18])
+                    cube([62,10,30]);
+            }//nema17    
+            //endStop holder
+            translate([-41,-28,78])
+            rotate([90,90,0]){
+                translate([17, 13, -1])
+                    cylinder(12, 1, 1, $fn=12);
+                translate([36,13,-1])
+                    cylinder(12, 1, 1, $fn=12);
+            }//endStopHolder
+              
         }//dif
+        
+        
+        if (nema17){
+            nema17Holder2(pX=36, pY=-7, pZ=24.3, rX=90, rZ=-90);
+            translate([11.8, -16, 0])
+                    cube([3,10,45.6]);
+            translate([11.8, -35, 0])
+                    cube([48.5,25,3]);
+            if (_showMetall){
+                endStop(-15,-35,25, 90, -90);
+                nema17(pX=36, pY=-7, pZ=24, rX=90, rZ=-90);
+                nema17GT2Puley(pX=36, pY=-11, pZ=24, rX=90, rZ=0);
+            }
+        }
         difference(){
             translate([-31,-14,0])
                 cube([ayhSizeX, ayhSizeY, ayhSizeZ]);
@@ -30,7 +61,7 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
             translate([-20,0,ayhSizeZ-10])
                 cylinder(11, 5.4, 5.4, $fn=30);
             M8TR8Holes(pX=-20, pZ=ayhSizeZ+1, rY=180, rZ=45);
-        }//diff
+        }//diff        
             
         if (_showMetall){
             M8TR8(pX=-20, pZ=ayhSizeZ+5, rY=180, rZ=45);
