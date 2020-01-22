@@ -8,7 +8,7 @@ axisYHolder(_showMetall = false, nema17=true);
 
 ayhSizeX = 20;
 ayhSizeY = 25;
-ayhSizeZ = 62;
+ayhSizeZ = 52;
 
 module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall = false, nema17=true)
 {
@@ -22,15 +22,15 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
             translate([-40, -(14+8), 8])
             rotate([0,90,0])
                 cylinder(62, 4.6, 4.3, $fn=30);
-            translate([-40, -(14+8), 58])
+            translate([-40, -(14+8), 48])
             rotate([0,90,0])
                 cylinder(62, 4.6, 4.3, $fn=30);
             if (nema17){
-                translate([-40, -(14+8+5), 18])
-                    cube([62,10,30]);
+                translate([-40, -(14+8+5), 14])
+                    cube([62,10,28]);
             }//nema17    
             //endStop holder
-            translate([-41,-28,78])
+            translate([-41,-28,68])
             rotate([90,90,0]){
                 translate([17, 13, -1])
                     cylinder(12, 1, 1, $fn=12);
@@ -42,15 +42,15 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
         
         
         if (nema17){
-            nema17Holder2(pX=36, pY=-7, pZ=24.3, rX=90, rZ=-90);
+            nema17Holder2(pX=36, pY=-7, pZ=27.3, rX=90, rZ=-90);
             translate([11.8, -16, 0])
                     cube([3,10,45.6]);
             translate([11.8, -35, 0])
-                    cube([48.5,25,3]);
+                    cube([48.5,71,3]);
             if (_showMetall){
-                endStop(-15,-35,25, 90, -90);
-                nema17(pX=36, pY=-7, pZ=24, rX=90, rZ=-90);
-                nema17GT2Puley(pX=36, pY=-11, pZ=24, rX=90, rZ=0);
+                endStop(-15,-35, 25, 90, -90);
+                nema17(pX=36, pY=-7, pZ=27, rX=90, rZ=-90);
+                nema17GT2Puley(pX=36, pY=-11, pZ=27, rX=90, rZ=0);
             }
         }
         difference(){
@@ -67,7 +67,7 @@ module axisYHolder(pX=0, pY=0, pZ=0, rX=0, rY=0, rZ=0, clr="grey", _showMetall =
             M8TR8(pX=-20, pZ=ayhSizeZ+5, rY=180, rZ=45);
         }
         LL8UUHolder(pZ=12, rY=-90, rZ=90, dispMetall = _showMetall);
-        LL8UUHolder(pZ=50, rY=-90, rZ=90, dispMetall = _showMetall);
+        LL8UUHolder(pZ=36, rY=-90, rZ=90, dispMetall = _showMetall);
         
 
         if (_showMetall){
