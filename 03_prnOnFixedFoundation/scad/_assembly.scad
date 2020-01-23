@@ -9,6 +9,7 @@ include <barHolder.scad>
 include <barHolderOppositeX.scad>
 include <bottomSideHolder.scad>
 include <bottomZAxisHolder.scad>
+include <axisY.scad>
 
 foundation();
 //heatBed160x160(pX=-120, pZ=-60);
@@ -29,3 +30,6 @@ botSideHolder(pX=-190, pY=216, pZ=10, rX=-90, rZ=180, _showMetall=true);
 
 botZAxisHolder(pY=210, pZ=-6, rY=180, rZ=-90,useEndStop=true, showMetall = true);
 botZAxisHolder(pY=-210, pZ=-6, rY=180, rZ=90,useEndStop=false, showMetall = true);
+axisYHolder(pY=-210,pZ=-100, rX=180, rZ=-90,_showMetall = false, nema17=true);
+mirror([1,0,0])
+axisYHolder(pY=210,pZ=-100, rX=180, rZ=90,_showMetall = false, nema17=false);
