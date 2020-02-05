@@ -1,7 +1,7 @@
 include <../../lib_v2/scad/nema17.scad>
 include <../../lib_v2/scad/endStop.scad>
 //botSideHolder(_showMetall=true);
-topSideHolder(useEndStop = true, _showMetall=false); //add more longer middle part
+//topSideHolder(useEndStop = true, _showMetall=false); //add more longer middle part
 
 bshLength = 50;
 Mx = 8;
